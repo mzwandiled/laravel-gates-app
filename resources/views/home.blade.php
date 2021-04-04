@@ -13,8 +13,19 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    {{ __('You are logged in!') }}
+                    @can('isAdmin')
+                        <div class="btn btn-success btn-lg">
+                            You Have Admin Access
+                        </div>
+                    @elsecan('isManager')
+                        <div class="btn btn-primary btn-lg">
+                            You Have Manager Access
+                        </div>
+                        @elsecan('isUser')
+                        <div class="btn btn-info btn-lg">
+                            You Have User Access
+                        </div>
+                    @endcan
                 </div>
             </div>
         </div>
